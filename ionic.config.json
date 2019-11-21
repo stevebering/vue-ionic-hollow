@@ -5,6 +5,7 @@
   "watchPatterns": [
     "scss/**/*",
     "www/**/*",
+    "app/**/*",
     "!www/lib/**/*",
     "!www/**/*.map"
   ]
