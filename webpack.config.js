@@ -11,11 +11,15 @@ module.exports = {
         test: /\.tsx?$/,
         use: "awesome-typescript-loader",
         exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx", ".scss"]
+    extensions: [".tsx", ".ts", ".js", ".jsx", ".scss", ".html"]
   },
   output: {
     filename: "[name].js",

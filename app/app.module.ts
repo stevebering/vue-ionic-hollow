@@ -1,5 +1,6 @@
 import angular from "angular";
 import controllers from "./controllers/index";
+import router from "./app.routes";
 
 const app = angular.module("starter", ["ionic", controllers.name]);
 app.run(function($ionicPlatform: { ready: Function }) {
@@ -23,55 +24,4 @@ app.run(function($ionicPlatform: { ready: Function }) {
   });
 });
 
-app.config(function(
-  $stateProvider: { state: Function },
-  $urlRouterProvider: { otherwise: Function }
-) {
-  $stateProvider
-    .state("app", {
-      url: "/app",
-      abstract: true,
-      templateUrl: "templates/menu.html",
-      controller: "AppCtrl",
-      controllerAs: '$ctrl'
-    })
-    .state("app.search", {
-      url: "/search",
-      views: {
-        menuContent: {
-          templateUrl: "templates/search.html"
-        }
-      }
-    })
-    .state("app.browse", {
-      url: "/browse",
-      views: {
-        menuContent: {
-          templateUrl: "templates/browse.html"
-        }
-      }
-    })
-    .state("app.playlists", {
-      url: "/playlists",
-      views: {
-        menuContent: {
-          templateUrl: "templates/playlists.html",
-          controller: "PlaylistsCtrl",
-          controllerAs: '$ctrl'
-        }
-      }
-    })
-
-    .state("app.single", {
-      url: "/playlists/:playlistId",
-      views: {
-        menuContent: {
-          templateUrl: "templates/playlist.html",
-          controller: "PlaylistCtrl",
-          controllerAs: '$ctrl'
-        }
-      }
-    });
-
-  $urlRouterProvider.otherwise("/app/playlists");
-});
+app.config(router);
